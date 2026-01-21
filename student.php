@@ -10,6 +10,7 @@
 <body>
 <?php
 session_start();
+include 'db.php';
 
 if(!isset($_SESSION['user_id'])) {
     $_SESSION['error'] = 'Please login or signup to access this page';
@@ -21,6 +22,22 @@ if($_SESSION['role'] != 'student') {
     $_SESSION['error'] = 'Access denied. This page is for students only';
     header('Location: homepage.php');
     exit();
+}
+
+$student_id = $_SESSION['user_id'];
+
+// Check if student has an assigned supervisor
+$assigned_query = "SELECT teacher_id FROM requests WHERE student_id='$student_id' AND status='accepted'";
+$assigned_result = read($assigned_query);
+$assigned_teacher = null;
+$notices = [];
+
+if(count($assigned_result) > 0) {
+    $assigned_teacher = $assigned_result[0]['teacher_id'];
+    
+    // Fetch notices from assigned teacher
+    $notices_query = "SELECT * FROM notice WHERE teacher_id='$assigned_teacher' ORDER BY teacher_id DESC LIMIT 5";
+    $notices = read($notices_query);
 }
 ?>
 
@@ -88,9 +105,22 @@ if($_SESSION['role'] != 'student') {
         </form>
     </div>
 
+    <!-- Notice Board Section -->
+    <?php if($assigned_teacher && count($notices) > 0) { ?>
+    <div class="notice-board">
+        <h2>📢 Notice Board from Your Supervisor</h2>
+        <div class="notices-list">
+            <?php foreach($notices as $notice) { ?>
+            <div class="notice-item">
+                <p><?php echo htmlspecialchars($notice['notice']); ?></p>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+    <?php } ?>
+
 </div>
 
-</body>
 <script>
 document.getElementById('profile').onclick = function() {
     window.location.href = 'profile.php';
@@ -105,4 +135,4 @@ document.getElementById('submit-thesis').onclick = function() {
     window.location.href = 'submit_thesis.php';
 };
 </script>
-</html>
+</body>

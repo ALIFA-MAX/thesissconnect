@@ -253,3 +253,110 @@ h1{
 .edit-cancel-btn:hover{
     background: #64748b;
 }
+/* Requests Section */
+.requests-section {
+    margin-top: 30px;
+}
+
+.requests-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.request-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 4px solid #ccc;
+}
+
+.request-card.status-pending {
+    border-left-color: #ff9800;
+}
+
+.request-card.status-accepted {
+    border-left-color: #4caf50;
+}
+
+.request-card.status-rejected {
+    border-left-color: #f44336;
+}
+
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.teacher-info h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.teacher-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+}
+
+.status-badge.status-pending {
+    background-color: #ff9800;
+}
+
+.status-badge.status-accepted {
+    background-color: #4caf50;
+}
+
+.status-badge.status-rejected {
+    background-color: #f44336;
+}
+
+.request-details {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.request-details p {
+    margin: 5px 0;
+}
+
+.no-requests {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.no-requests p {
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+.no-requests a {
+    color: #1a2980;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.no-requests a:hover {
+    text-decoration: underline;
+}

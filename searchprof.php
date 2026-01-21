@@ -56,13 +56,37 @@
     }
    
     $results = read($query);
+    
+    // Get student's existing requests
+    $student_id = $_SESSION['user_id'];
+    $student_requests_query = "SELECT teacher_id, status FROM requests WHERE student_id='$student_id'";
+    $student_requests = read($student_requests_query);
+    $requests_map = [];
+    foreach($student_requests as $req) {
+        $requests_map[$req['teacher_id']] = $req['status'];
+    }
+    
     if(count($results) == 0) {
         echo "<p>No supervisors found matching your criteria.</p>";
     } 
     else
     if (count($results) > 0) {
         // print_r($results);
-        foreach ($results as $supervisor) {  ?>
+        foreach ($results as $supervisor) {
+            $teacher_id = $supervisor['teacher_id'];
+            $request_status = isset($requests_map[$teacher_id]) ? $requests_map[$teacher_id] : null;
+            $button_html = '';
+            
+            if($request_status == 'pending') {
+                $button_html = '<span class="request-status pending">Request Pending</span>';
+            } elseif($request_status == 'accepted') {
+                $button_html = '<span class="request-status accepted">Request Accepted</span>';
+            } elseif($request_status == 'rejected') {
+                $button_html = '<span class="request-status rejected">Request Rejected</span>';
+            } else {
+                $button_html = '<a href="apply.php?apply=' . $teacher_id . '">Request for Supervision</a>';
+            }
+        ?>
     <div class="supervisor-card">
       <img src="assets/images/teacher.svg" class="supervisor-img">
       <div class="supervisor-info">
@@ -73,7 +97,7 @@
         <p><strong>Research Fields:</strong> <?php echo $supervisor['research_fields']; ?></p>
         <p><strong>Email:</strong> <?php echo $supervisor['email']; ?></p>
         <p><strong>Phone:</strong> <?php echo $supervisor['phone']; ?></p>
-        <a href="apply.php?apply=<?php echo $supervisor['teacher_id']; ?>">Request for Supervision</a> <a href="mailto:<?php echo $supervisor['email']; ?>">Mail</a>
+        <?php echo $button_html; ?> <a href="mailto:<?php echo $supervisor['email']; ?>">Mail</a>
       </div>
     </div> 
     <?php }} ?>

@@ -107,7 +107,7 @@ $teacher_id = $_SESSION['user_id'];
     <?php } ?>
 
 </div>
-</body>
+
 <script>
 document.getElementById('profile').onclick = function() {
     window.location.href = 'profile.php';
@@ -115,5 +115,9 @@ document.getElementById('profile').onclick = function() {
 document.getElementById('assigned-students').onclick = function() {
     window.location.href = 'assigned_students.php';
 };
+document.getElementById('notices').onclick = function() {
+    window.location.href = 'notices.php';
+};
 </script>
+</body>
 </html>

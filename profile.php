@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="assets/css/navbar.css">
 <link rel="stylesheet" href="assets/css/profile.css">
 </head>
-
 <body>
 
 <?php 
@@ -19,10 +18,16 @@ if(!isset($_SESSION['user_id'])) {
     header('Location: homepage.php');
     exit();
 }
-
-$data = read("SELECT * FROM user_data where student_id = $_SESSION[user_id] or teacher_id = $_SESSION[user_id]");
+$data = read("SELECT * FROM user_data WHERE (student_id = '{$_SESSION['user_id']}' OR teacher_id = '{$_SESSION['user_id']}')");
+// print_r($data);
 $role = $data[0]['role'];
 $dashboard_link = $role == 'student' ? 'student.php' : 'proffessor.php';
+
+// Fetch user's sent requests (for students)
+if($role == 'student') {
+    $student_id = $_SESSION['user_id'];
+    $requests = read("SELECT * FROM requests WHERE student_id = '$student_id' ORDER BY status DESC");
+}
 ?>
 
 <nav class="navbar">
@@ -71,6 +76,47 @@ if($data[0]['role'] == 'student'){ ?>
     </div>
 
 </div>
+
+<?php 
+// Display sent requests for students
+if(isset($requests) && count($requests) > 0) { ?>
+    <div class="requests-section">
+        <h2>My Supervision Requests</h2>
+        <div class="requests-list">
+            <?php foreach($requests as $request) { 
+                // Fetch professor details
+                $teacher_query = "SELECT * FROM user_data WHERE teacher_id='{$request['teacher_id']}' AND role='professor'";
+                $teacher_data = read($teacher_query);
+                if(count($teacher_data) > 0) {
+                    $teacher = $teacher_data[0];
+                    $status_class = 'status-' . $request['status'];
+            ?>
+            <div class="request-card <?php echo $status_class; ?>">
+                <div class="request-header">
+                    <div class="teacher-info">
+                        <h3><?php echo htmlspecialchars($teacher['full_name']); ?></h3>
+                        <p><?php echo htmlspecialchars($teacher['designation']); ?> - <?php echo htmlspecialchars($teacher['department']); ?></p>
+                    </div>
+                    <span class="status-badge <?php echo $status_class; ?>">
+                        <?php echo ucfirst($request['status']); ?>
+                    </span>
+                </div>
+                <div class="request-details">
+                    <p><strong>Teacher ID:</strong> <?php echo htmlspecialchars($teacher['teacher_id']); ?></p>
+                    <p><strong>Research Fields:</strong> <?php echo htmlspecialchars($teacher['research_fields']); ?></p>
+                    <p><strong>Email:</strong> <?php echo htmlspecialchars($teacher['email']); ?></p>
+                </div>
+            </div>
+            <?php } } ?>
+        </div>
+    </div>
+<?php } elseif($role == 'student') { ?>
+    <div class="no-requests">
+        <p>You haven't sent any supervision requests yet.</p>
+        <p><a href="student.php">Search for a supervisor</a></p>
+    </div>
+<?php } ?>
+
 <?php } ?>
 
 <?php if($data[0]['role'] == 'professor'){ ?>
