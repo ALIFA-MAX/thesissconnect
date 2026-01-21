@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profiles | Thesis Connect</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Tahoma, sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#1e293b;
+}
+
+/* Section title */
+.section-title{
+    margin:40px 0 20px;
+    color:#0f172a;
+    font-size:26px;
+}
+
+/* Profile grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+    gap:25px;
+}
+
+/* Profile card */
+.card{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.header img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:3px solid #38bdf8;
+}
+
+.header h2{
+    font-size:20px;
+    color:#0f172a;
+}
+
+.header p{
+    font-size:14px;
+    color:#475569;
+}
+
+/* Info text */
+.info p{
+    font-size:15px;
+    margin-bottom:8px;
+    color:#334155;
+}
+
+.label{
+    font-weight:600;
+}
+
+/* Status badge */
+.badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    margin:10px 0;
+}
+
+.open{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.closed{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* Buttons */
+.actions{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.actions a{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.email{
+    background:#38bdf8;
+    color:white;
+}
+
+.apply{
+    background:#0f172a;
+    color:white;
+}
+
+.disabled{
+    background:#94a3b8;
+    color:white;
+    pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Explore Profiles</h1>
+
+<!-- ================= STUDENTS ================= -->
+<div class="section-title">Students Looking for Group Members</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="header">
+            <img src="student.png">
+            <div>
+                <h2>Rahim Uddin</h2>
+                <p>Student</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <p><span class="label">Student ID:</span> 23-50270-2</p>
+            <p><span class="label">Department:</span> CSE</p>
+            <p><span class="label">Thesis Area:</span> Machine Learning</p>
+            <p><span class="label">Group Status:</span> Looking for members</p>
+            <p><span class="label">Email:</span> rahim@student.edu</p>
+        </div>
+
+        <div class="actions">
+            <a href="mailto:rahim@student.edu" class="email">Email to Join Group</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= PROFESSORS ================= -->
+<div class="section-title">Thesis Supervisors</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="header">
+            <img src="teacher.png">
+            <div>
+                <h2>Dr. Ahmed Rahman</h2>
+                <p>Associate Professor</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <p><span class="label">Teacher ID:</span> 123456</p>
+            <p><span class="label">Department:</span> CSE</p>
+            <p><span class="label">Research Area:</span> AI, NLP</p>
+            <p><span class="label">Max Students:</span> 5</p>
+            <p><span class="label">Available Seats:</span> 2</p>
+        </div>
+
+        <span class="badge open">Accepting Students</span>
+
+        <div class="actions">
+            <a href="mailto:ahmed@university.edu" class="email">Email Supervisor</a>
+            <a href="#" class="apply">Send Thesis Application</a>
+        </div>
+    </div>
+
+    <!-- Example: full seat -->
+    <div class="card">
+        <div class="header">
+            <img src="teacher.png">
+            <div>
+                <h2>Dr. Nasreen Sultana</h2>
+                <p>Professor</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <p><span class="label">Research Area:</span> Software Engineering</p>
+            <p><span class="label">Available Seats:</span> 0</p>
+        </div>
+
+        <span class="badge closed">Not Accepting Students</span>
+
+        <div class="actions">
+            <a class="disabled">Application Closed</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Tahoma, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+/* Navbar */
+.navbar{
+    background:#111827;
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.navbar h2{
+    font-size:22px;
+}
+
+/* Dashboard container */
+.dashboard{
+    padding:30px;
+}
+
+.welcome{
+    margin-bottom:30px;
+}
+
+.welcome h1{
+    color:#111827;
+}
+
+.welcome p{
+    color:#555;
+}
+
+/* Cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:16px;
+    color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Admin Dashboard</h2>
+    <p>Admin ID: ADMIN01</p>
+</div>
+
+<div class="dashboard">
+
+    <div class="welcome">
+        <h1>Welcome, Admin 👋</h1>
+        <p>System overview & management panel</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Manage Students</h3>
+            <p>Add, update or remove student accounts</p>
+        </div>
+
+        <div class="card">
+            <h3>Manage Teachers</h3>
+            <p>Create & manage faculty profiles</p>
+        </div>
+
+        <div class="card">
+            <h3>Assign Supervisors</h3>
+            <p>Allocate thesis mentors to students</p>
+        </div>
+
+        <div class="card">
+            <h3>System Settings</h3>
+            <p>Update platform rules & policies</p>
+        </div>
+
+        <div class="card">
+            <h3>Notices</h3>
+            <p>Publish announcements</p>
+        </div>
+
+        <div class="card">
+            <h3>Reports</h3>
+            <p>View academic & system reports</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

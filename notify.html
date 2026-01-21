@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notifications</title>
+
+<style>
+body{
+    font-family:Segoe UI, Tahoma, sans-serif;
+    background:#f1f5f9;
+    padding:30px;
+}
+
+h1{
+    margin-bottom:25px;
+    color:#1a2980;
+}
+
+/* Section title */
+.section-title{
+    margin-top:30px;
+    margin-bottom:15px;
+    font-size:20px;
+    font-weight:600;
+    color:#334155;
+}
+
+/* Notification card */
+.notification{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    margin-bottom:15px;
+}
+
+.notification p{
+    margin:6px 0;
+}
+
+/* Labels */
+.type{
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.prof{
+    color:#0f766e;
+}
+
+.student{
+    color:#1d4ed8;
+}
+
+/* Status */
+.status{
+    font-size:14px;
+    color:#16a34a;
+    font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Notifications</h1>
+
+<!-- Professor Notifications -->
+<div class="section-title">Professor Notifications</div>
+
+<div class="notification">
+    <div class="type prof">📩 New Thesis Application</div>
+    <p><b>Student:</b> Rahim Ahmed</p>
+    <p><b>Student ID:</b> CE-20001-1</p>
+    <p><b>Research Area:</b> Artificial Intelligence</p>
+</div>
+
+<div class="notification">
+    <div class="type prof">📩 Group Join Request</div>
+    <p><b>Student:</b> Karim Hasan</p>
+    <p>Wants to join an existing thesis group.</p>
+</div>
+
+<!-- Student Notifications -->
+<div class="section-title">Student Notifications</div>
+
+<div class="notification">
+    <div class="type student">✅ Application Accepted</div>
+    <p><b>Professor:</b> Dr. Ahmed Rahman</p>
+    <p>Your thesis application has been approved.</p>
+    <div class="status">You are now under supervision</div>
+</div>
+
+<div class="notification">
+    <div class="type student">⏳ Application Under Review</div>
+    <p>Your application is currently being reviewed.</p>
+</div>
+
+</body>
+</html>
