@@ -3,74 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Student Dashboard</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI, Tahoma, sans-serif;
-}
-
-body{
-    background:#f2f6fc;
-}
-
-/* Navbar */
-.navbar{
-    background:#1a2980;
-    color:white;
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.navbar h2{
-    font-size:22px;
-}
-
-/* Dashboard container */
-.dashboard{
-    padding:30px;
-}
-
-/* Cards */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
-
-.card h3{
-    color:#1a2980;
-    margin-bottom:10px;
-}
-
-.card p{
-    font-size:16px;
-}
-
-/* Welcome */
-.welcome{
-    margin-bottom:30px;
-}
-</style>
+<link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="assets/css/student.css">
 </head>
 
 <body>
+<?php
+session_start();
 
-<div class="navbar">
-    <h2>Student Dashboard</h2>
-    <p>23-50169-1</p>
-</div>
+if(!isset($_SESSION['user_id'])) {
+    $_SESSION['error'] = 'Please login or signup to access this page';
+    header('Location: homepage.php');
+    exit();
+}
+
+if($_SESSION['role'] != 'student') {
+    $_SESSION['error'] = 'Access denied. This page is for students only';
+    header('Location: homepage.php');
+    exit();
+}
+?>
+
+<nav class="navbar">
+    <div class="logo">ThesisConnect</div>
+    <div class="nav-links">
+        <a href="student.php" class="nav-link active">Dashboard</a>
+        <a href="profile.php" class="nav-link">Profile</a>
+    </div>
+    <button class="logout-btn" onclick="window.location.href='logout.php'">Logout</button>
+</nav>
 
 <div class="dashboard">
 
@@ -79,29 +40,69 @@ body{
         <p>Manage your thesis activities</p>
     </div>
 
-    <div class="cards">
-        <div class="card">
+    <div  class="cards">
+        <div id="profile" class="card">
             <h3>My Profile</h3>
             <p>View your personal & academic info</p>
         </div>
 
-        <div class="card">
+        <div id="assigned-supervisor" class="card">
             <h3>Assigned Supervisor</h3>
             <p>View thesis mentor details</p>
         </div>
 
-        <div class="card">
+        <div id="thesis-progress" class="card">
             <h3>Thesis Progress</h3>
             <p>Track proposal & report status</p>
         </div>
 
-        <div class="card">
+        <div id="submit-thesis" class="card">
             <h3>Submit Thesis</h3>
             <p>Upload documents & files</p>
         </div>
     </div>
 
+    <div class="search-supervisor">
+        <h2>Search Supervisor</h2>
+        <form method="GET" action="searchprof.php" style="display:flex; flex-direction:column; gap:18px;">
+            <div>
+                <label for="search_name">By Name:</label>
+                <input type="text" id="search_name" name="search_name" placeholder="Enter supervisor name">
+            </div>
+            <div>
+                <label for="search_research_fields">By Research Fields:</label>
+                <select id="search_research_fields" name="search_research_fields">
+                    <option value="">Select Research Field</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Networks">Networks</option>
+                    <option value="Robotics">Robotics</option>
+                    <option value="IoT">Internet of Things</option>
+                    <option value="Cloud Computing">Cloud Computing</option>
+                </select>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
 </div>
 
 </body>
+<script>
+document.getElementById('profile').onclick = function() {
+    window.location.href = 'profile.php';
+};
+document.getElementById('assigned-supervisor').onclick = function() {
+    window.location.href = 'assigned_supervisor.php';
+};
+document.getElementById('thesis-progress').onclick = function() {
+    window.location.href = 'thesis_progress.php';
+};
+document.getElementById('submit-thesis').onclick = function() {
+    window.location.href = 'submit_thesis.php';
+};
+</script>
 </html>

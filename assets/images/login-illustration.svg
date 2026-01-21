@@ -1,0 +1,36 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="180" fill="#26d0ce" opacity="0.1"/>
+  
+  <!-- Laptop base -->
+  <rect x="80" y="180" width="240" height="120" rx="8" fill="#1a2980"/>
+  
+  <!-- Laptop screen -->
+  <rect x="100" y="100" width="200" height="120" rx="6" fill="#e8f4f4"/>
+  <rect x="105" y="105" width="190" height="110" rx="4" fill="#ffffff"/>
+  
+  <!-- Screen content lines -->
+  <line x1="120" y1="130" x2="280" y2="130" stroke="#26d0ce" stroke-width="4" stroke-linecap="round"/>
+  <line x1="120" y1="150" x2="250" y2="150" stroke="#26d0ce" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <line x1="120" y1="170" x2="260" y2="170" stroke="#26d0ce" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <line x1="120" y1="190" x2="230" y2="190" stroke="#26d0ce" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Keyboard -->
+  <rect x="100" y="220" width="200" height="60" fill="#1a2980"/>
+  <rect x="110" y="230" width="180" height="40" fill="#0f1650"/>
+  
+  <!-- Books stack -->
+  <rect x="270" y="250" width="60" height="12" rx="2" fill="#26d0ce"/>
+  <rect x="265" y="238" width="65" height="12" rx="2" fill="#1a2980"/>
+  <rect x="275" y="226" width="55" height="12" rx="2" fill="#4a90e2"/>
+  
+  <!-- Coffee cup -->
+  <ellipse cx="60" cy="270" rx="18" ry="6" fill="#8b4513" opacity="0.5"/>
+  <rect x="42" y="240" width="36" height="30" rx="6" fill="#d4a574"/>
+  <rect x="44" y="242" width="32" height="26" rx="5" fill="#8b4513"/>
+  <path d="M 78 255 Q 88 255 88 265 Q 88 275 78 275" stroke="#d4a574" stroke-width="3" fill="none"/>
+  
+  <!-- Pencil -->
+  <rect x="320" y="280" width="8" height="50" rx="2" fill="#ffd700" transform="rotate(-30 324 305)"/>
+  <polygon points="320,275 328,275 324,268" fill="#ff6b6b" transform="rotate(-30 324 271)"/>
+</svg>

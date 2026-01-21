@@ -10,8 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = read($query);
 
     if (count($result) == 1) {
-        $_SESSION['role'] = $result[0];
-        if ($result[0] == 'Student') {
+        $_SESSION['role'] = $result[0]['role'];
+        // print_r($result[0]);
+        if($result[0]['role'] == 'student') {
             header('Location: student.php');
         } else {
             header('Location: proffessor.php');

@@ -12,161 +12,7 @@ if (isset($_SESSION['error'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register - ThesisConnect</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #1a2980, #26d0ce);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 30px;
-}
-
-.register-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    width: 100%;
-    overflow: hidden;
-    max-width: 450px;
-    min-width: 320px;
-}
-
-.register-header {
-    background: linear-gradient(135deg, #1a2980, #26d0ce);
-    color: white;
-    padding: 30px;
-    text-align: center;
-}
-
-.register-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.register-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.register-body {
-    padding: 40px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-    font-size: 15px;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border 0.3s;
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: #26d0ce;
-    box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.1);
-}
-
-.form-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.btn {
-    padding: 15px 30px;
-    background: #1a2980;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-
-.btn:hover {
-    background: #26d0ce;
-}
-
-.role-fields {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    border: 2px dashed #ddd;
-}
-
-.id-format {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-}
-
-.login-link {
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.login-link a {
-    color: #1a2980;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.login-link a:hover {
-    color: #26d0ce;
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .register-body {
-        padding: 25px;
-    }
-    
-    .register-header h1 {
-        font-size: 2rem;
-    }
-}
-</style>
+<link rel="stylesheet" href="assets/css/registration.css">
 </head>
 <body>
 <div class="register-container">
@@ -287,8 +133,20 @@ input:focus, select:focus {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="research_fields">Research Fields:</label>
-                        <input type="text" id="research_fields" name="research_fields" placeholder="e.g., AI, Data Science">
+                        <label>Research Fields:</label>
+                        <div class="checkbox-group">
+                          <label><input type="checkbox" name="research_fields[]" value="Artificial Intelligence"> Artificial Intelligence</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Data Science"> Data Science</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Machine Learning"> Machine Learning</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Cybersecurity"> Cybersecurity</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Software Engineering"> Software Engineering</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Networks"> Networks</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Robotics"> Robotics</label>
+                          <label><input type="checkbox" name="research_fields[]" value="IoT"> Internet of Things</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Cloud Computing"> Cloud Computing</label>
+                          <label><input type="checkbox" name="research_fields[]" value="Other"> Other</label>
+                        </div>
+                        <div class="id-format">Select all applicable research fields.</div>
                     </div>
                 </div>
             </div>
