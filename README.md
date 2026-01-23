@@ -141,8 +141,7 @@ http://localhost/thesissconnect/homepage.php
 
 💡 Project Idea
  **Fatima**
- **Abdulla**
-
+ 
 🤝 Contributors
 * Fatima
 * Abdulla
