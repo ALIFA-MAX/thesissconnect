@@ -153,5 +153,3 @@ This project is developed for **academic and educational purposes only**.
 ❤️ Final Note
 **Thesis Connect** demonstrates the practical application of **Web Technologies** in solving real academic problems.
 The project focuses on usability, clarity, and structured system design.
-
-এগুলাও বানিয়ে দিতে পারি 💪
